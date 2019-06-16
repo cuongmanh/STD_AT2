@@ -8,6 +8,16 @@ write_csv( x = Emp %>% filter(CODE >= 10000 & CODE < 20000)
 %>% mutate(LABEL = NULL, CODE = NULL)
 %>% select(LGA,YEAR,`Unemployment rate`) %>% rename('Unemployment_rate' = `Unemployment rate`),'STD_AT2/CLEAN DATA/Unemployment.csv')
 
+write_csv( x = Emp %>% filter(CODE >= 10000 & CODE < 20000)
+           %>% rowwise() %>% mutate(LGA = (strsplit(LABEL,' ')[[1]][1]))
+           %>% mutate(LABEL = NULL, CODE = NULL)
+           %>% select(LGA,YEAR,`Bachelor Degree`) %>% rename('Bachelor_Degree' = `Bachelor Degree`),'STD_AT2/CLEAN DATA/Bachelor_Degree.csv')
+
+
+
+
+
+
 
 View(Income %>% filter(CODE >= 10000 & CODE < 20000)
      %>% rowwise() %>% mutate(LGA = (strsplit(LABEL,' ')[[1]][1]))
